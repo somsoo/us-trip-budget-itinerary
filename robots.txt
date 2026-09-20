@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://us-trip-budget-itinerary.enjoy-onepage.com/sitemap.xml
