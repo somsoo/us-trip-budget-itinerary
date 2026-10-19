@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>Travel Itinerary &amp; Budget Planner | Day-by-Day Trip Cost Calculator</title>
+  <title>Travel Itinerary &amp; Budget Planner</title>
   <link>https://us-trip-budget-itinerary.enjoy-onepage.com/</link>
-  <description>Plan day-by-day travel schedules, flight times, and split shared trip expenses in USD ($) with visual day cards.</description>
+  <description>Plan travel schedules, calculate trip expenses, and export itineraries.</description>
   <language>en-us</language>
   <atom:link href="https://us-trip-budget-itinerary.enjoy-onepage.com/rss.xml" rel="self" type="application/rss+xml" />
-  <lastBuildDate>Tue, 29 Sep 2026 06:03:12 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 19 Oct 2026 01:37:28 +0000</lastBuildDate>
   <item>
-    <title>Disclaimer | Travel Itinerary &amp; Budget Planner | Day-by-Day Trip Cost Calculator</title>
+    <title>Disclaimer | Travel Itinerary &amp; Budget Planner</title>
     <link>https://us-trip-budget-itinerary.enjoy-onepage.com/disclaimer.html</link>
     <guid isPermaLink="true">https://us-trip-budget-itinerary.enjoy-onepage.com/disclaimer.html</guid>
-    <description>Disclaimer | Travel Itinerary &amp; Budget Planner | Day-by-Day Trip Cost Calculator</description>
-    <pubDate>Sun, 20 Sep 2026 22:14:53 +0900</pubDate>
+    <description>Disclaimer for the Travel Itinerary &amp; Budget Planner.</description>
+    <pubDate>Mon, 19 Oct 2026 01:37:28 +0000</pubDate>
   </item>
   <item>
-    <title>Terms of Service | Travel Itinerary &amp; Budget Planner | Day-by-Day Trip Cost Calculator</title>
-    <link>https://us-trip-budget-itinerary.enjoy-onepage.com/terms.html</link>
-    <guid isPermaLink="true">https://us-trip-budget-itinerary.enjoy-onepage.com/terms.html</guid>
-    <description>Terms of Service | Travel Itinerary &amp; Budget Planner | Day-by-Day Trip Cost Calculator</description>
-    <pubDate>Sun, 20 Sep 2026 22:14:53 +0900</pubDate>
-  </item>
-  <item>
-    <title>Privacy Policy | Travel Itinerary &amp; Budget Planner | Day-by-Day Trip Cost Calculator</title>
+    <title>Privacy Policy | Travel Itinerary &amp; Budget Planner</title>
     <link>https://us-trip-budget-itinerary.enjoy-onepage.com/privacy.html</link>
     <guid isPermaLink="true">https://us-trip-budget-itinerary.enjoy-onepage.com/privacy.html</guid>
-    <description>Privacy Policy | Travel Itinerary &amp; Budget Planner | Day-by-Day Trip Cost Calculator</description>
-    <pubDate>Sun, 20 Sep 2026 22:14:53 +0900</pubDate>
+    <description>Privacy Policy for the Travel Itinerary &amp; Budget Planner.</description>
+    <pubDate>Mon, 19 Oct 2026 01:37:28 +0000</pubDate>
+  </item>
+  <item>
+    <title>Terms of Service | Travel Itinerary &amp; Budget Planner</title>
+    <link>https://us-trip-budget-itinerary.enjoy-onepage.com/terms.html</link>
+    <guid isPermaLink="true">https://us-trip-budget-itinerary.enjoy-onepage.com/terms.html</guid>
+    <description>Terms of Service for the Travel Itinerary &amp; Budget Planner.</description>
+    <pubDate>Mon, 19 Oct 2026 01:37:28 +0000</pubDate>
   </item>
 </channel>
 </rss>

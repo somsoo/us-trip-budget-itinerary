@@ -1,28 +1,580 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Travel Itinerary &amp; Budget Planner - Under maintenance</title>
-<meta name="robots" content="noindex, nofollow">
-<meta name="site-status" content="maintenance">
-<meta name="description" content="This tool is temporarily offline while it is rebuilt.">
+<title>Travel Itinerary &amp; Budget Planner</title>
+<meta name="description" content="Plan travel schedules, calculate trip expenses, and export itineraries.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://us-trip-budget-itinerary.enjoy-onepage.com/">
+<meta name="theme-color" content="#0284c7">
+<link rel="icon" href="/favicon.ico">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Travel Itinerary &amp; Budget Planner">
+<meta property="og:title" content="Travel Itinerary &amp; Budget Planner">
+<meta property="og:description" content="Plan travel schedules, calculate trip expenses, and export itineraries.">
+<meta property="og:url" content="https://us-trip-budget-itinerary.enjoy-onepage.com/">
+<meta property="og:image" content="https://us-trip-budget-itinerary.enjoy-onepage.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Travel Itinerary &amp; Budget Planner">
+<meta name="twitter:description" content="Plan travel schedules, calculate trip expenses, and export itineraries.">
+<meta name="twitter:image" content="https://us-trip-budget-itinerary.enjoy-onepage.com/og-image.png">
+<link rel="alternate" type="application/rss+xml" title="Travel Itinerary RSS" href="https://us-trip-budget-itinerary.enjoy-onepage.com/rss.xml">
+<link rel="sitemap" type="application/xml" href="https://us-trip-budget-itinerary.enjoy-onepage.com/sitemap.xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://us-trip-budget-itinerary.enjoy-onepage.com/#webapp",
+      "name": "Travel Itinerary & Budget Planner",
+      "url": "https://us-trip-budget-itinerary.enjoy-onepage.com/",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "All",
+      "inLanguage": "en",
+      "description": "An interactive multi-day vacation itinerary and trip expense planner with category budgeting, cost-per-person calculations, and printable travel sheets.",
+      "image": "https://us-trip-budget-itinerary.enjoy-onepage.com/og-image.png",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://us-trip-budget-itinerary.enjoy-onepage.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I access my travel itinerary offline without internet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The itinerary planner operates with 100% local browser caching, allowing you to view and adjust your travel schedules on airplanes or remote locations without cellular data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the per-person expense splitting work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By specifying the number of travelers in your party, the planner automatically divides shared accommodation, transit, and overall group expenses into individual per-person shares."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I print or save my travel plan as a PDF document?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Tapping the Print/PDF button optimizes the schedule into a clean printable itinerary format, eliminating navigation bars and ads for easy travel binder packing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my vacation locations or flight details stored online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All destination names, dates, flight times, and financial budgets are saved solely in your local browser storage. No itinerary data is transferred to external servers."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- ADSENSE START: loader -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+<!-- ADSENSE END: loader -->
 <style>
-  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #0f172a; }
-  main { max-width: 560px; margin: 12vh auto; padding: 32px 24px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; }
-  h1 { font-size: 1.4rem; margin: 0 0 12px; }
-  p { line-height: 1.6; color: #334155; }
-  a { color: #1d4ed8; font-weight: 600; }
-  .tag { display: inline-block; font-size: .8rem; font-weight: 700; color: #92400e; background: #fef3c7; border-radius: 999px; padding: 4px 10px; margin-bottom: 14px; }
+:root{--bg:#f0f9ff;--card:#fff;--ink:#0f172a;--muted:#475569;--accent:#0284c7;--accent-hover:#0369a1;--line:#e0f2fe;--stay:#8b5cf6;--food:#f59e0b;--transit:#0ea5e9;--act:#10b981}
+*{box-sizing:border-box}
+html,body{margin:0;max-width:100%;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-wrap:anywhere}
+.header{background:linear-gradient(135deg,#0369a1,#0284c7);color:#fff;text-align:center;padding:26px 16px 22px}
+.header h1{margin:0;font-size:1.7rem}
+.header-sub{opacity:.92;margin-top:6px;font-size:.95rem}
+.wrap{max-width:1100px;margin:0 auto;padding:12px 14px 8px}
+.grid2{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:1024px){.grid2{grid-template-columns:7fr 5fr;align-items:start}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin:14px 0}
+.grid2 .card{margin:0}
+.card h2{font-size:1.15rem;margin:4px 0 10px}
+.lbl{display:block;font-weight:600;margin:8px 0 4px;font-size:.92rem}
+input[type=text],input[type=number],input[type=time],select{width:100%;font:inherit;font-size:1rem;padding:8px 10px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:var(--ink)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>div{flex:1 1 120px;min-width:0}
+.btn{font:inherit;border:1px solid #cbd5e1;background:#fff;color:var(--ink);border-radius:10px;padding:8px 13px;cursor:pointer;transition:background .15s}
+.btn:hover{background:#f8fafc}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.btn.primary:hover{background:var(--accent-hover)}
+.btn.sm{padding:4px 10px;font-size:.86rem;border-radius:8px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+
+/* Day Tabs */
+.day-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:10px}
+.day-tab{padding:6px 12px;border:1px solid #cbd5e1;background:#f8fafc;border-radius:8px;cursor:pointer;font-weight:600;font-size:.88rem;white-space:nowrap}
+.day-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* Schedule Item */
+.item-list{list-style:none;padding:0;margin:12px 0}
+.sched-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:8px;background:#fff}
+.cat-tag{display:inline-block;padding:2px 6px;border-radius:4px;font-size:.72rem;font-weight:700;color:#fff}
+.cat-stay{background:var(--stay)}.cat-food{background:var(--food)}.cat-transit{background:var(--transit)}.cat-act{background:var(--act)}.cat-other{background:#64748b}
+.del-btn{color:#dc2626;background:none;border:none;cursor:pointer;font-weight:bold;padding:0 4px}
+
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+@media (max-width:600px){.metric-grid{grid-template-columns:1fr}}
+.metric-box{background:#f0f9ff;border:1px solid #bae6fd;border-radius:12px;padding:12px}
+.metric-val{font-size:1.55rem;font-weight:800;color:var(--accent);margin:2px 0}
+.metric-lbl{font-size:.82rem;color:var(--muted);font-weight:600;text-transform:uppercase}
+
+.hint{font-size:.86rem;color:var(--muted);margin:6px 0}
+.notice{border-color:#fcd34d;background:#fffbeb}
+.faq-item h3{font-size:1rem;margin:12px 0 4px}
+.faq-item p{margin:0;color:#334155}
+.src{font-size:.82rem;color:var(--muted)}
+.ad-box{max-width:1100px;margin:10px auto;padding:0 14px;background:transparent;overflow:hidden;text-align:center}
+.ad-top ins{max-height:90px}
+.footer{text-align:center;font-size:.85rem;color:var(--muted);padding:18px 14px 28px}
+.footer a{color:var(--muted);text-decoration:none}
+.footer a:hover{text-decoration:underline}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 18px;border-radius:999px;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;max-width:90vw}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion: reduce){.toast{transition:none}}
+
+/* Print Stylesheet */
+@media print{
+  .header,.ad-box,.actions,.btn,.day-tabs button,.footer,#global-ux-toast{display:none !important}
+  body{background:#fff;color:#000}
+  .card{border:none;padding:0}
+  .wrap{max-width:100%;margin:0;padding:0}
+}
 </style>
 </head>
 <body>
-<main>
-  <span class="tag">Under maintenance</span>
+<header class="header">
   <h1>Travel Itinerary &amp; Budget Planner</h1>
-  <p>This tool is temporarily offline. We found that the previous version did not work the way it was described, so we took it down while we rebuild it properly.</p>
-  <p>Please check back later.</p>
-  <p><a href="https://enjoy-onepage.com/">Browse our other free tools</a></p>
+  <div class="header-sub">Daily Travel Schedule · Expense Allocation &amp; Per-Person Cost · 100% Private</div>
+</header>
+
+<!-- ADSENSE START: top -->
+<div class="ad-box ad-top">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3824727725" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: top -->
+
+<main class="wrap">
+  <div class="grid2">
+    <!-- Itinerary Card -->
+    <section class="card" aria-labelledby="itin-h">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <h2 id="itin-h" style="margin:0">✈️ Daily Trip Itinerary</h2>
+        <button type="button" id="btnAddDay" class="btn sm">+ Add Day</button>
+      </div>
+
+      <!-- Day Navigation Tabs -->
+      <div id="dayTabsWrap" class="day-tabs" style="margin-top:10px">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Add Activity Form -->
+      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:10px;margin-bottom:12px">
+        <div class="row">
+          <div style="flex:1 1 80px">
+            <input type="time" id="actTime" value="10:00">
+          </div>
+          <div style="flex:3 1 180px">
+            <input type="text" id="actTitle" placeholder="Activity / Destination (e.g. Louvre Museum)">
+          </div>
+        </div>
+        <div class="row" style="margin-top:6px">
+          <div style="flex:2 1 130px">
+            <select id="actCat">
+              <option value="sightseeing" selected>Activity / Sightseeing</option>
+              <option value="dining">Food &amp; Dining</option>
+              <option value="lodging">Hotel &amp; Lodging</option>
+              <option value="transit">Flight &amp; Transit</option>
+              <option value="other">Shopping / Other</option>
+            </select>
+          </div>
+          <div style="flex:1 1 90px">
+            <input type="number" id="actCost" placeholder="Cost ($)" min="0">
+          </div>
+          <div style="flex:0 0 auto">
+            <button type="button" id="btnAddAct" class="btn primary sm" style="height:38px">+ Add Item</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schedule List for active day -->
+      <ul id="scheduleList" class="item-list" aria-label="Day schedule activities"></ul>
+
+      <div class="actions">
+        <button type="button" id="btnPrintItin" class="btn primary sm">🖨️ Print / Save PDF</button>
+        <button type="button" id="btnResetItin" class="btn sm">Reset to Sample Trip</button>
+      </div>
+      <p class="hint">Offline ready. Changes save automatically into your local browser storage.</p>
+    </section>
+
+    <!-- Budget Analytics Card -->
+    <section class="card" aria-labelledby="budget-h">
+      <h2 id="budget-h">💰 Budget &amp; Expense Summary</h2>
+
+      <div class="row">
+        <div>
+          <label class="lbl" for="totalTripBudget">Target Budget ($)</label>
+          <input type="number" id="totalTripBudget" value="2500" min="0">
+        </div>
+        <div>
+          <label class="lbl" for="travelerCount">Travelers</label>
+          <input type="number" id="travelerCount" value="2" min="1">
+        </div>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric-box">
+          <div class="metric-lbl">Total Planned Costs</div>
+          <div id="resTotalSpent" class="metric-val">$0</div>
+          <div id="resBudgetRemaining" class="hint" style="margin:0">$2,500 remaining</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-lbl">Cost Per Person</div>
+          <div id="resCostPerPerson" class="metric-val">$0</div>
+          <div id="resTravelerNote" class="hint" style="margin:0">For 2 travelers</div>
+        </div>
+      </div>
+
+      <label class="lbl">Category Expense Breakdown</label>
+      <div style="font-size:.88rem;margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f1f5f9">
+          <span>🏨 Lodging:</span>
+          <strong id="costStay">$0</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f1f5f9">
+          <span>🍽️ Dining &amp; Food:</span>
+          <strong id="costFood">$0</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f1f5f9">
+          <span>🚆 Transit &amp; Flights:</span>
+          <strong id="costTransit">$0</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f1f5f9">
+          <span>🎟️ Activities &amp; Tours:</span>
+          <strong id="costAct">$0</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0">
+          <span>🛍️ Shopping &amp; Other:</span>
+          <strong id="costOther">$0</strong>
+        </div>
+      </div>
+
+      <div class="actions" style="margin-top:14px">
+        <button type="button" id="btnExportJson" class="btn sm">⬇ Export Trip JSON</button>
+        <button type="button" id="btnShareApp" class="btn sm">🔗 Share Planner</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- ADSENSE START: mid -->
+  <div class="ad-box ad-mid">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1186914926" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <!-- ADSENSE END: mid -->
+
+  <!-- Educational Guide -->
+  <section class="card" aria-labelledby="guide-h">
+    <h2 id="guide-h">📖 Travel Logistics: Vacation Budget Allocation</h2>
+    <p>Efficient itinerary planning balances geographical transit clusters with financial buffer allocations to minimize vacation stress:</p>
+    <ul>
+      <li><strong>The 40/30/20/10 Budget Framework:</strong> Experienced travel planners generally allocate 40% of the total budget to transport and accommodation, 30% to food and dining experiences, 20% to tours and museum entries, and 10% as an emergency buffer.</li>
+      <li><strong>Geographical Clustering:</strong> Organize each day's itinerary around a tight neighborhood hub. Attempting to cross a metropolitan center multiple times a day squanders 30% of daylight hours in transit.</li>
+      <li><strong>Buffer Windows:</strong> Schedule at least one 90-minute unscheduled window daily to absorb flight delays, train connections, and spontaneous neighborhood discoveries.</li>
+    </ul>
+    <p class="src">Travel references: Steves R. (2020) <em>Europe Through the Back Door</em>; World Tourism Organization (UNWTO) Travel Economics Guidelines.</p>
+  </section>
+
+  <section class="card" id="faq" aria-labelledby="faq-h">
+    <h2 id="faq-h">❓ Frequently Asked Questions</h2>
+    <div class="faq-item"><h3>Can I access my travel itinerary offline without internet?</h3><p>Yes. The itinerary planner operates with 100% local browser caching, allowing you to view and adjust your travel schedules on airplanes or remote locations without cellular data.</p></div>
+    <div class="faq-item"><h3>How does the per-person expense splitting work?</h3><p>By specifying the number of travelers in your party, the planner automatically divides shared accommodation, transit, and overall group expenses into individual per-person shares.</p></div>
+    <div class="faq-item"><h3>Can I print or save my travel plan as a PDF document?</h3><p>Yes. Tapping the Print/PDF button optimizes the schedule into a clean printable itinerary format, eliminating navigation bars and ads for easy travel binder packing.</p></div>
+    <div class="faq-item"><h3>Are my vacation locations or flight details stored online?</h3><p>No. All destination names, dates, flight times, and financial budgets are saved solely in your local browser storage. No itinerary data is transferred to external servers.</p></div>
+  </section>
+
+  <section class="card notice" aria-labelledby="note-h">
+    <h2 id="note-h">⚠️ Currency &amp; Travel Notice</h2>
+    <p>International transaction fees and currency fluctuations can alter final travel costs. Retain digital copies of receipts and verify local business operating hours prior to departure.</p>
+  </section>
 </main>
+
+<!-- ADSENSE START: bottom -->
+<div class="ad-box ad-bottom">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3416334507" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: bottom -->
+
+<footer class="footer">
+  <p>Free Travel Itinerary &amp; Budget Planner · 100% private and client-side.</p>
+  <p><a href="/disclaimer.html">Disclaimer</a> | <a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Service</a></p>
+</footer>
+
+<div id="global-ux-toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- LOGIC START -->
+<script>
+(function () {
+  'use strict';
+  var SITE = 'https://us-trip-budget-itinerary.enjoy-onepage.com';
+  var TOOL_NAME = 'Travel Itinerary & Budget Planner';
+  var STORAGE_KEY = 'us_trip_planner_data';
+
+  var trip = {
+    budget: 2500,
+    travelers: 2,
+    activeDay: 1,
+    days: [
+      {
+        day: 1,
+        title: 'Arrival & Welcome Dinner',
+        items: [
+          { time: '14:00', title: 'Hotel Check-in & Settle Luggage', cat: 'lodging', cost: 180 },
+          { time: '16:00', title: 'Historic Old Town Walking Tour', cat: 'sightseeing', cost: 25 },
+          { time: '19:00', title: 'Traditional Welcome Dinner', cat: 'dining', cost: 85 }
+        ]
+      },
+      {
+        day: 2,
+        title: 'Museums & City Exploration',
+        items: [
+          { time: '09:30', title: 'Metro Transit Day Pass', cat: 'transit', cost: 16 },
+          { time: '10:30', title: 'National Art Museum Admission', cat: 'sightseeing', cost: 40 },
+          { time: '13:00', title: 'Bistro Lunch & Coffee', cat: 'dining', cost: 45 },
+          { time: '18:30', title: 'Sunset River Cruise', cat: 'sightseeing', cost: 70 }
+        ]
+      },
+      {
+        day: 3,
+        title: 'Local Markets & Departure',
+        items: [
+          { time: '10:00', title: 'Grand Bazaar & Souvenirs', cat: 'other', cost: 60 },
+          { time: '12:30', title: 'Farewell Seafood Lunch', cat: 'dining', cost: 55 },
+          { time: '15:30', title: 'Airport Express Train', cat: 'transit', cost: 30 }
+        ]
+      }
+    ]
+  };
+
+  function $(id) { return document.getElementById(id); }
+
+  function showToast(msg) {
+    var toast = $('global-ux-toast');
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toast._tid);
+    toast._tid = setTimeout(function () { toast.classList.remove('show'); }, 2200);
+  }
+
+  function loadTrip() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) trip = JSON.parse(raw);
+    } catch (e) {}
+
+    $('totalTripBudget').value = trip.budget || 2500;
+    $('travelerCount').value = trip.travelers || 2;
+    if (!trip.activeDay || trip.activeDay > trip.days.length) trip.activeDay = 1;
+
+    renderTabs();
+    renderSchedule();
+    calculateBudget();
+  }
+
+  function saveTrip() {
+    try {
+      trip.budget = parseFloat($('totalTripBudget').value) || 0;
+      trip.travelers = parseInt($('travelerCount').value, 10) || 1;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(trip));
+    } catch (e) {}
+    calculateBudget();
+  }
+
+  function renderTabs() {
+    var wrap = $('dayTabsWrap');
+    wrap.innerHTML = '';
+    trip.days.forEach(function (d) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'day-tab' + (d.day === trip.activeDay ? ' active' : '');
+      btn.textContent = 'Day ' + d.day;
+      btn.addEventListener('click', function () {
+        trip.activeDay = d.day;
+        renderTabs();
+        renderSchedule();
+      });
+      wrap.appendChild(btn);
+    });
+  }
+
+  function renderSchedule() {
+    var list = $('scheduleList');
+    list.innerHTML = '';
+
+    var curDay = trip.days.find(function (d) { return d.day === trip.activeDay; });
+    if (!curDay || !curDay.items || curDay.items.length === 0) {
+      list.innerHTML = '<li style="text-align:center;color:var(--muted);font-size:.85rem;padding:20px 0">No activities planned yet for Day ' + trip.activeDay + '. Add your first item above!</li>';
+      return;
+    }
+
+    // Sort by time
+    curDay.items.sort(function (a, b) { return a.time.localeCompare(b.time); });
+
+    curDay.items.forEach(function (item, idx) {
+      var li = document.createElement('li');
+      li.className = 'sched-item';
+
+      var catClass = { lodging: 'cat-stay', dining: 'cat-food', transit: 'cat-transit', sightseeing: 'cat-act', other: 'cat-other' }[item.cat] || 'cat-other';
+      var catName = { lodging: 'Hotel', dining: 'Food', transit: 'Transit', sightseeing: 'Activity', other: 'Other' }[item.cat] || 'Item';
+
+      li.innerHTML = '<div style="display:flex;align-items:center;gap:8px">' +
+        '<strong style="font-size:.9rem;color:var(--accent)">' + item.time + '</strong>' +
+        '<span class="cat-tag ' + catClass + '">' + catName + '</span>' +
+        '<span style="font-weight:600">' + escapeHtml(item.title) + '</span>' +
+        '</div>' +
+        '<div style="display:flex;align-items:center;gap:10px">' +
+        '<strong style="color:var(--ink)">$' + (item.cost || 0) + '</strong>' +
+        '<button type="button" class="del-btn" data-idx="' + idx + '" title="Remove activity">&times;</button>' +
+        '</div>';
+
+      list.appendChild(li);
+    });
+
+    var delBtns = list.querySelectorAll('.del-btn');
+    delBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var i = parseInt(this.getAttribute('data-idx'), 10);
+        curDay.items.splice(i, 1);
+        saveTrip();
+        renderSchedule();
+        showToast('Activity removed');
+      });
+    });
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function calculateBudget() {
+    var target = parseFloat($('totalTripBudget').value) || 0;
+    var travelers = parseInt($('travelerCount').value, 10) || 1;
+    if (travelers < 1) travelers = 1;
+
+    var totalCost = 0;
+    var cats = { lodging: 0, dining: 0, transit: 0, sightseeing: 0, other: 0 };
+
+    trip.days.forEach(function (d) {
+      if (d.items) {
+        d.items.forEach(function (it) {
+          var c = parseFloat(it.cost) || 0;
+          totalCost += c;
+          if (cats[it.cat] !== undefined) cats[it.cat] += c; else cats.other += c;
+        });
+      }
+    });
+
+    $('resTotalSpent').textContent = '$' + totalCost.toLocaleString();
+    var rem = target - totalCost;
+    var remEl = $('resBudgetRemaining');
+    if (rem >= 0) {
+      remEl.textContent = '$' + rem.toLocaleString() + ' remaining';
+      remEl.style.color = 'var(--muted)';
+    } else {
+      remEl.textContent = '+$' + Math.abs(rem).toLocaleString() + ' over budget';
+      remEl.style.color = '#dc2626';
+    }
+
+    var perPerson = Math.round(totalCost / travelers);
+    $('resCostPerPerson').textContent = '$' + perPerson.toLocaleString();
+    $('resTravelerNote').textContent = 'For ' + travelers + (travelers === 1 ? ' traveler' : ' travelers');
+
+    $('costStay').textContent = '$' + cats.lodging.toLocaleString();
+    $('costFood').textContent = '$' + cats.dining.toLocaleString();
+    $('costTransit').textContent = '$' + cats.transit.toLocaleString();
+    $('costAct').textContent = '$' + cats.sightseeing.toLocaleString();
+    $('costOther').textContent = '$' + cats.other.toLocaleString();
+  }
+
+  // Event Listeners
+  $('btnAddDay').addEventListener('click', function () {
+    var nextDayNum = trip.days.length + 1;
+    trip.days.push({ day: nextDayNum, title: 'Day ' + nextDayNum, items: [] });
+    trip.activeDay = nextDayNum;
+    saveTrip();
+    renderTabs();
+    renderSchedule();
+    showToast('Added Day ' + nextDayNum);
+  });
+
+  $('btnAddAct').addEventListener('click', function () {
+    var title = $('actTitle').value.trim();
+    if (!title) {
+      showToast('Please enter an activity name or destination.');
+      return;
+    }
+    var time = $('actTime').value || '12:00';
+    var cat = $('actCat').value;
+    var cost = parseFloat($('actCost').value) || 0;
+
+    var curDay = trip.days.find(function (d) { return d.day === trip.activeDay; });
+    if (!curDay) return;
+
+    curDay.items.push({ time: time, title: title, cat: cat, cost: cost });
+    $('actTitle').value = '';
+    $('actCost').value = '';
+    saveTrip();
+    renderSchedule();
+    showToast('Activity added to Day ' + trip.activeDay);
+  });
+
+  $('totalTripBudget').addEventListener('input', saveTrip);
+  $('travelerCount').addEventListener('input', saveTrip);
+
+  $('btnPrintItin').addEventListener('click', function () {
+    window.print();
+  });
+
+  $('btnResetItin').addEventListener('click', function () {
+    localStorage.removeItem(STORAGE_KEY);
+    loadTrip();
+    showToast('Reset to sample 3-day trip');
+  });
+
+  $('btnExportJson').addEventListener('click', function () {
+    var blob = new Blob([JSON.stringify(trip, null, 2)], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'trip_itinerary_budget.json';
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('Trip itinerary exported as JSON');
+  });
+
+  $('btnShareApp').addEventListener('click', function () {
+    var shareMsg = '✈️ Free Travel Itinerary & Budget Planner\n👉 ' + TOOL_NAME + ': ' + SITE + '/';
+    if (navigator.share) {
+      navigator.share({ title: TOOL_NAME, text: shareMsg, url: SITE + '/' }).catch(function (e) {
+        if (!e || e.name !== 'AbortError') showToast('Link ready to share!');
+      });
+    } else {
+      showToast('Planner URL: ' + SITE + '/');
+    }
+  });
+
+  loadTrip();
+})();
+</script>
+<!-- LOGIC END -->
 </body>
 </html>
