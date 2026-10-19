@@ -166,6 +166,22 @@ input[type=text],input[type=number],input[type=time],select{width:100%;font:inhe
   .ad-bottom { min-height: 280px !important; }
   .ad-bottom ins { min-height: 280px !important; }
 </style>
+<style id="global-quality-shield">
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .ad-bottom, .ad-bottom ins {
+    min-height: 280px !important;
+    background: transparent !important;
+  }
+  :focus-visible {
+    outline: 2px solid #2563eb !important;
+    outline-offset: 2px !important;
+  }
+</style>
 </head>
 <body>
 <header class="header">
@@ -215,7 +231,7 @@ input[type=text],input[type=number],input[type=time],select{width:100%;font:inhe
             </select>
           </div>
           <div style="flex:1 1 90px">
-            <input type="number" id="actCost" placeholder="Cost ($)" min="0">
+            <input type="number" id="actCost" placeholder="Cost ($)" min="0" inputmode="numeric">
           </div>
           <div style="flex:0 0 auto">
             <button type="button" id="btnAddAct" class="btn primary sm" style="height:38px">+ Add Item</button>
@@ -240,11 +256,11 @@ input[type=text],input[type=number],input[type=time],select{width:100%;font:inhe
       <div class="row">
         <div>
           <label class="lbl" for="totalTripBudget">Target Budget ($)</label>
-          <input type="number" id="totalTripBudget" value="2500" min="0">
+          <input type="number" id="totalTripBudget" value="2500" min="0" inputmode="numeric">
         </div>
         <div>
           <label class="lbl" for="travelerCount">Travelers</label>
-          <input type="number" id="travelerCount" value="2" min="1">
+          <input type="number" id="travelerCount" value="2" min="1" inputmode="numeric">
         </div>
       </div>
 
